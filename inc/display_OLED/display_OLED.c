@@ -1,23 +1,11 @@
-#ifndef DISPLAY_OLED_H // Include guard para evitar múltiplas inclusões
-#define DISPLAY_OLED_H
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "pico/stdlib.h"
-#include "hardware/i2c.h"
-#include "include/ssd1306.h"
-
-// Definição dos pinos I2C
-const uint I2C_SDA = 14;
-const uint I2C_SCL = 15;
+#include "inc/display_OLED/display_OLED.h"
 
 // Estrutura do display OLED
 ssd1306_t ssd;
 
 // Buffer do OLED
-static uint8_t ssd_buffer[ssd1306_buffer_length];
-static struct render_area frame_area = {
+uint8_t ssd_buffer[ssd1306_buffer_length];
+struct render_area frame_area = {
     .start_column = 0,
     .end_column = ssd1306_width - 1,
     .start_page = 0,
@@ -62,5 +50,3 @@ void inicializacao_display()
     memset(ssd_buffer, 0, ssd1306_buffer_length);
     render_on_display(ssd_buffer, &frame_area);
 }
-
-#endif

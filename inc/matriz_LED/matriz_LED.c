@@ -1,23 +1,4 @@
-#ifndef MATRIZ_LED_H // Include guard para evitar múltiplas inclusões
-#define MATRIZ_LED_H 
-
-#include <stdio.h>
-#include <stdlib.h>
-#include "pico/stdlib.h"
-#include "hardware/pio.h"
-#include "hardware/clocks.h"
-#include "ws2818b.pio.h"
-
-#define LED_COUNT 25
-#define LED_PIN 7
-
-// Definição da struct de pixel GRB
-struct pixel_t
-{
-    uint8_t G, R, B;
-};
-typedef struct pixel_t pixel_t;
-typedef pixel_t npLED_t; 
+#include "inc/matriz_LED/matriz_LED.h"
 
 // Declaração do buffer de pixels que formam a matriz e variáveis para uso da máquina PIO.
 npLED_t leds[LED_COUNT];
@@ -36,7 +17,7 @@ void npInit(uint pin)
     if (sm < 0)
     {
         np_pio = pio1;
-        sm = pio_claim_unused_sm(np_pio, true); 
+        sm = pio_claim_unused_sm(np_pio, true);
     }
 
     // Inicia programa na máquina PIO obtida.
@@ -51,12 +32,18 @@ void npInit(uint pin)
     }
 }
 
+// Ajuste de gamma para correção de brilho
+uint8_t correcao_gamma(uint8_t value)
+{
+    return (uint8_t)(pow((value / 255.0), 2.2) * 255.0);
+}
+
 // Atribui uma cor RGB a um LED.
 void npSetLED(const uint index, const uint8_t r, const uint8_t g, const uint8_t b)
 {
-    leds[index].R = r;
-    leds[index].G = g;
-    leds[index].B = b;
+    leds[index].R = correcao_gamma(r);
+    leds[index].G = correcao_gamma(g);
+    leds[index].B = correcao_gamma(b);
 }
 
 // Limpa o buffer de pixels.
@@ -76,7 +63,5 @@ void npWrite()
         pio_sm_put_blocking(np_pio, sm, leds[i].R);
         pio_sm_put_blocking(np_pio, sm, leds[i].B);
     }
-    sleep_us(100); 
+    sleep_us(100);
 }
-
-#endif

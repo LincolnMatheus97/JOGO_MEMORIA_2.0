@@ -39,6 +39,8 @@
     "files.associations": {
         "*.java": "java",
         "binary_info.h": "c",
-        "ctype.h": "c"
+        "ctype.h": "c",
+        "matriz_led.h": "c",
+        "ssd1306_font.h": "c"
     }
 }

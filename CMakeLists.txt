@@ -35,7 +35,14 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(jogo_memoria_2.0 src/jogo_memoria_2.0.c src/ssd1306_i2c.c)
+add_executable(jogo_memoria_2.0 
+    src/jogo_memoria_2.0.c 
+    inc/display_OLED/ssd1306_i2c.c
+    inc/buzzer/buzzer.c
+    inc/display_OLED/display_OLED.c
+    inc/joystick/joystick.c
+    inc/logica_jogo/logica_jogo.c
+    inc/matriz_LED/matriz_LED.c)
 
 pico_set_program_name(jogo_memoria_2.0 "jogo_memoria_2.0")
 pico_set_program_version(jogo_memoria_2.0 "0.1")

@@ -20,7 +20,7 @@ Este é um projeto de um **Jogo da Memória** desenvolvido na placa didática **
 - **Bibliotecas**: 
    - Bibliotecas padrão do C: stdio.h, stdlib.h, string.h, time.h, e ctype.h.
    - Bibliotecas do SDK do Raspberry Pi Pico: pico/stdlib.h, pico/binary_info.h, hardware/pio.h, hardware/clocks.h, hardware/adc.h, hardware/pwm.h e hardware/i2c.
-   - Bibliotecas específicas do projeto: include/matriz_led.h, include/display_oled.h, include/buzzer.h, include/logica_jogo.h, include/joystick.h e ws2818b.pio.h
+   - Bibliotecas específicas do projeto: inc/matriz_LED/matriz_LED.h, inc/display_OLED/display_OLED.h, inc/display_OLED/ssd1306.h, inc/buzzer/buzzer.h, inc/logica_jogo/logica_jogo.h, inc/joystick/joystick.h e ws2818b.pio.h
 
 ## 📦 Estrutura do Projeto
 
@@ -29,18 +29,28 @@ JOGO_DA_MEMORIA_2.0/
 
 ├── .vscode/   # Configurações do VS Code 
 ├── build/     # Pasta de build 
-├── include/       # Arquivos de cabeçalho (.h) 
-│ ├── buzzer.h              # Configurações do buzzer
-│ ├── display_OLED.h        # Configurações do display OLED
-│ ├── joystick.h            # Configurações do joystick
-│ ├── logica_jogo.h         # Configurações da lógica do Jogo
-│ ├── matriz_LED.h          # Configurações da matriz de LED
-│ ├── ssd1306_font.h 
-│ ├── ssd1306_i2c.h 
-│ ├── ssd1306.h  
+├── inc/       # Arquivos de cabeçalho (.h) 
+│ ├── buzzer/              # Configurações do Buzzer
+│ │ ├── buzzer.c
+│ │ ├── buzzer.h
+│ ├── display_OLED/        # Configurações do display OLED
+│ │ ├── display_OLED.c
+│ │ ├── display_OLED.h
+│ │ ├── ssd1306_font.h
+│ │ ├── ssd1306_i2c.c.c
+│ │ ├── ssd1306_i2c.h
+│ │ ├── ssd1306.h
+│ ├── joystick/            # Configurações do joystick
+│ │ ├── joystick.c
+│ │ ├── joystick.h
+│ ├── logica_jogo/         # Configurações da logica do jogo
+│ │ ├── logica_jogo.c
+│ │ ├── logica_jogo.h
+│ ├── matriz_LED/          # Configurações do matriz de LED
+│ │ ├── matriz_LED.c
+│ │ ├── matriz_LED.h
 ├── src/
-│ ├── jogo_memoria_2.0.c    # Lógica Principal do sistema 
-│ ├── ssd1306_i2c.c.c       # Configuração do controlador de comunicação I2C com o RP2040
+│ ├── jogo_memoria_2.0.c    # Lógica Principal do projeto
 ├── .gitignore              # Arquivos ignorados pelo Git 
 ├── CMakeLists.txt          # Configuração do CMake 
 ├── pico_sdk_import.cmake   # Importação do Pico SDK 

@@ -1,27 +1,8 @@
-#ifndef JOGO_MEMORIA_H // Include guard para evitar múltiplas inclusões
-#define JOGO_MEMORIA_H
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <string.h>
-#include "pico/stdlib.h"
-#include "hardware/adc.h"
-#include "hardware/timer.h"
-#include "include/matriz_led.h"
-#include "include/display_oled.h"
-#include "include/buzzer.h"
-#include "include/joystick.h"
-
-// Definição dos pinos do Botões e tamanho Matriz de LEDs
-#define BT_A_PIN 5
-#define BT_B_PIN 6
-#define MATRIZ_LINHA 5
-#define MATRIZ_COLUNA 5
+#include "inc/logica_jogo/logica_jogo.h"
 
 // Variáveis do jogo.
 int sequencia[5];                        // Sequência de LEDs
-int tamanho_sequencia = 1;               // Começamos com 3 LEDs
+int tamanho_sequencia = 1;               // Começamos com 1 LED
 int indice_jogador = 0;                  // Índice do jogador na sequência
 int nivel = 1;                           // Nível do jogador
 int vida_jogador = 2;                    // Vidas do jogador
@@ -349,5 +330,3 @@ void verificar_jogada()
         }
     }
 }
-
-#endif

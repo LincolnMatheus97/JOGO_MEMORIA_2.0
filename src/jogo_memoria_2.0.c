@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "include/matriz_led.h"
-#include "include/display_oled.h"
-#include "include/buzzer.h"
-#include "include/logica_jogo.h"
-#include "include/joystick.h"
+#include "inc/matriz_LED/matriz_LED.h"
+#include "inc/display_OLED/display_OLED.h"
+#include "inc/buzzer/buzzer.h"
+#include "inc/logica_jogo/logica_jogo.h"
+#include "inc/joystick/joystick.h"
 
 // Função principal
 int main()

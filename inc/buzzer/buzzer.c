@@ -1,14 +1,4 @@
-#ifndef BUZZER_H // Include guard para evitar múltiplas inclusões
-#define BUZZER_H
-
-#include <stdio.h>
-#include "pico/stdlib.h"
-#include "hardware/pwm.h"
-#include "hardware/clocks.h"
-
-// Configuração do pino do buzzer e configuração da frequência do buzzer (em Hz)
-#define PINO_BUZZER 21
-#define FREQUENCIA_BUZZER 100
+#include "inc/buzzer/buzzer.h"
 
 static struct repeating_timer tempo_melodia;    
 static int indice_melodia = 0;               
@@ -123,5 +113,3 @@ void beep_grave(uint pin, uint duration_ms)
     sleep_ms(duration_ms);         
     pwm_set_gpio_level(pin, 0);    
 }
-
-#endif

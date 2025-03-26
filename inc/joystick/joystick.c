@@ -1,19 +1,4 @@
-#ifndef JOYSTICK_H // Include guard para evitar múltiplas inclusões
-#define JOYSTICK_H
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include "hardware/adc.h"
-#include "hardware/timer.h"
-#include "include/logica_jogo.h"
-#include "include/matriz_LED.h"
-
-// Definição dos pinos do Joystick, tamanho da Matriz de LEDs
-#define JOY_X_PIN 26
-#define JOY_Y_PIN 27
-#define MATRIZ_LINHA 5
-#define MATRIZ_COLUNA 5
+#include "inc/joystick/joystick.h"
 
 int led_x = 0, led_y = 0;                // Posição do LED selecionado
 static absolute_time_t ultimo_movimento; // Tempo do último movimento do Joystick
@@ -73,5 +58,3 @@ void inicializar_joystick()
     // Configura o temporizador para disparar a cada 50ms
     add_repeating_timer_ms(50, temporizador_joystick, NULL, &tempo);
 }
-
-#endif
