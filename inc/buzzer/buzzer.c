@@ -28,7 +28,7 @@ const uint duracao_notas[] = {
     200,
     500, 500, 500, 500, 500};
 
-// Função de callback de manipular a interrupção do temporizador para tocar a melodia
+// Função de callback de manipular a interrupção do temporizador para tocar notas da melodia
 bool tocar_nota(struct repeating_timer *t)
 {
     if (!tocando_melodia)
@@ -94,8 +94,8 @@ void beep_suave(uint pin, uint duration_ms)
     uint slice_num = pwm_gpio_to_slice_num(pin);
 
     pwm_config config = pwm_get_default_config();                          
-    pwm_config_set_clkdiv(&config, clock_get_hz(clk_sys) / (4000 * 4096));
-    pwm_init(slice_num, &config, true);
+    pwm_config_set_clkdiv(&config, clock_get_hz(clk_sys) / (4000 * 4096));  
+    pwm_init(slice_num, &config, true); 
     pwm_set_gpio_level(pin, 2048); 
     sleep_ms(duration_ms);         
     pwm_set_gpio_level(pin, 0);    

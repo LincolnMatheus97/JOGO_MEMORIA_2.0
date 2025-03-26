@@ -15,11 +15,11 @@
 #define MATRIZ_LINHA 5
 #define MATRIZ_COLUNA 5
 
-// Posição do LED selecionado
-extern int led_x, led_y;
+extern int coord_x_matriz;  // Posição da coord x na matriz de LED
+extern int coord_y_matriz;  // Posição da coord y na matriz de LED
 
-// Função de callback de manipular a interrupção do temporizador do joystick
-bool temporizador_joystick(struct repeating_timer *t);
+// Função de callback de manipular a interrupção do movimento do joystick
+bool movimento_joystick(struct repeating_timer *t);
 
 // incializa o joystick com o temporizador
 void inicializar_joystick();

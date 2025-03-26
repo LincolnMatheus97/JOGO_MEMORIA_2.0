@@ -1,41 +1,42 @@
 #include "inc/joystick/joystick.h"
 
-int led_x = 0, led_y = 0;                // Posição do LED selecionado
-static absolute_time_t ultimo_movimento; // Tempo do último movimento do Joystick
+int coord_x_matriz = 0;                     // Posição da coordenada x na matriz de LED 
+int coord_y_matriz = 0;                     // Posição da coordenada y na matriz de LED
+static absolute_time_t ultimo_movimento;    // Tempo do último movimento do Joystick
 
-// Função callback de manipular a interrupção do temporizador do joystick
-bool temporizador_joystick(struct repeating_timer *t)
+// Função callback de manipular a interrupção do movimento do joystick
+bool movimento_joystick(struct repeating_timer *t)
 {
     adc_select_input(0);
-    uint16_t valor_x = adc_read();
+    uint16_t valor_lido_x = adc_read();
     adc_select_input(1);
-    uint16_t valor_y = adc_read();
+    uint16_t valor_lido_y = adc_read();
 
     absolute_time_t agora = get_absolute_time();
 
-    if (absolute_time_diff_us(ultimo_movimento, agora) > 200000)
+    if (absolute_time_diff_us(ultimo_movimento, agora) > 200000) // 200ms
     {
         bool movimento = false;
 
-        if (valor_x > 4000 && led_y < MATRIZ_LINHA - 1)
+        if (valor_lido_x > 4000 && coord_y_matriz < MATRIZ_LINHA - 1)
         {
-            led_y++; // Baixo
+            coord_y_matriz++; // Baixo
             movimento = true;
         }
-        else if (valor_x < 1000 && led_y > 0)
+        else if (valor_lido_x < 1000 && coord_y_matriz > 0)
         {
-            led_y--; // Cima
+            coord_y_matriz--; // Cima
             movimento = true;
         }
 
-        if (valor_y > 4000 && led_x < MATRIZ_COLUNA - 1)
+        if (valor_lido_y > 4000 && coord_x_matriz < MATRIZ_COLUNA - 1)
         {
-            led_x++; // Direita
+            coord_x_matriz++; // Direita
             movimento = true;
         }
-        else if (valor_y < 1000 && led_x > 0)
+        else if (valor_lido_y < 1000 && coord_x_matriz > 0)
         {
-            led_x--; // Esquerda
+            coord_x_matriz--; // Esquerda
             movimento = true;
         }
 
@@ -56,5 +57,5 @@ void inicializar_joystick()
     ultimo_movimento = get_absolute_time();
 
     // Configura o temporizador para disparar a cada 50ms
-    add_repeating_timer_ms(50, temporizador_joystick, NULL, &tempo);
+    add_repeating_timer_ms(50, movimento_joystick, NULL, &tempo);
 }

@@ -54,7 +54,7 @@ int main()
         }
 
         // Exibir posição atual do LED branco
-        npSetLED(pegar_indice_LED(led_x, led_y), 100, 100, 100);
+        npSetLED(pegar_indice_LED(coord_x_matriz, coord_y_matriz), 100, 100, 100);
         npWrite();
 
         // Verificar se o jogador acertou a sequência de LEDs

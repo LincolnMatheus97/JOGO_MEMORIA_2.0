@@ -13,7 +13,7 @@
 // Função para inicializar o PWM do buzzer
 void inicializar_pwm_buzzer(uint pin);
 
-// Função de callback de manipular a interrupção do temporizador para tocar a melodia
+// Função de callback de manipular a interrupção do temporizador para tocar notas da melodia
 bool tocar_nota(struct repeating_timer *t);
 
 // Função para inciar a melodia

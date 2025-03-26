@@ -1,12 +1,12 @@
 #include "inc/logica_jogo/logica_jogo.h"
 
 // Variáveis do jogo.
-int sequencia[5];                        // Sequência de LEDs
-int tamanho_sequencia = 1;               // Começamos com 1 LED
-int indice_jogador = 0;                  // Índice do jogador na sequência
-int nivel = 1;                           // Nível do jogador
-int vida_jogador = 2;                    // Vidas do jogador
-bool acertos[LED_COUNT] = {false};       // LEDs acertados
+int sequencia[5];                  // Sequência de LEDs
+int tamanho_sequencia = 1;         // Começamos com 1 LED
+int indice_jogador = 0;            // Índice do jogador na sequência
+int nivel = 1;                     // Nível do jogador
+int vida_jogador = 2;              // Vidas do jogador
+bool acertos[LED_COUNT] = {false}; // LEDs acertados
 
 // Função para debouncing dos botões.
 bool debounce_botao(uint pin)
@@ -258,8 +258,8 @@ void inicializar_jogo()
 // Verifica se o jogador acertou a sequência.
 void verificar_jogada()
 {
-    // Pega o índice do LED selecionado pelo jogador
-    int indice = pegar_indice_LED(led_x, led_y);
+    // Pega o índice da matriz de LED, selecionado pelo jogador
+    int indice = pegar_indice_LED(coord_x_matriz, coord_y_matriz);
 
     // Se o jogador acertou o LED
     if (indice == sequencia[indice_jogador])
