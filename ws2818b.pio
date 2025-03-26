@@ -11,7 +11,7 @@
 % c-sdk {
 #include "hardware/clocks.h"
 
-void ws2818b_program_init(PIO pio, uint sm, uint offset, uint pin, float freq) {
+static inline void ws2818b_program_init(PIO pio, uint sm, uint offset, uint pin, float freq) {
 
   pio_gpio_init(pio, pin);
   
