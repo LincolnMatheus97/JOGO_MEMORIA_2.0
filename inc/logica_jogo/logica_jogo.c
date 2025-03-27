@@ -51,7 +51,7 @@ void sequencia_aleatoria_LED()
     }
 }
 
-// Exibe a sequência de LEDs com Temporizadores de software.
+// Exibe a sequência de LEDs com Temporizadores de hardware.
 void exibir_sequencia()
 {
 
@@ -78,7 +78,7 @@ void exibir_sequencia()
     }
 }
 
-// Indica erro na sequência  com temporizadores de software.
+// Indica erro na sequência  com temporizadores de hardware.
 void indicar_erro()
 {
     absolute_time_t inicio = get_absolute_time();
@@ -116,7 +116,7 @@ void indicar_erro()
     }
 }
 
-// Indica sucesso no sequência com temporizadores de software.
+// Indica sucesso no sequência com temporizadores de hardware.
 void indicar_acerto()
 {
     absolute_time_t inicio = get_absolute_time();
@@ -154,7 +154,7 @@ void indicar_acerto()
     }
 }
 
-// Indica vitoria no jogo com temporizadores de software.
+// Indica vitoria no jogo com temporizadores de hardware.
 void indicar_vitoria()
 {
     iniciar_melodia();
